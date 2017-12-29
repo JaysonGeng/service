@@ -43,15 +43,15 @@ public class Service {
 			//初始化数据库
 			Class.forName("org.sqlite.JDBC");
 			//用户数据库
-			c = DriverManager.getConnection("jdbc:sqlite:test.db");
+			c = DriverManager.getConnection("jdbc:sqlite:src/test.db");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 			//群组数据库
-			d = DriverManager.getConnection("jdbc:sqlite:group.db");
+			d = DriverManager.getConnection("jdbc:sqlite:src/group.db");
 			d.setAutoCommit(false);
 			stmt2 = d.createStatement();
 			//活动数据库
-			e = DriverManager.getConnection("jdbc:sqlite:plan.db");
+			e = DriverManager.getConnection("jdbc:sqlite:src/plan.db");
 			e.setAutoCommit(false);
 			stmt3 = e.createStatement();
 			new Db();
