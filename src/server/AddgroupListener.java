@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import connect.AConnection.OnRecevieMsgListener;
 import connect.AConnectionManager;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageType;
 import message.GroupList;
@@ -26,7 +26,7 @@ public class AddgroupListener extends MessageSender implements OnRecevieMsgListe
 				long c=fromOneClient.to,w=fromOneClient.from;
 			    ResultSet rs;
 				try {
-					rs = Zhuji.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
+					rs = Service.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
 				
 			      while ( rs.next() ) 
 			      {
@@ -34,8 +34,8 @@ public class AddgroupListener extends MessageSender implements OnRecevieMsgListe
 			    	  if(d==c)
 			    	  {
 					      String sql = "UPDATE COMPANY set MEMBER = '"+rs.getString("member")+"/"+w+"' where NUMBER = "+c+";";
-					      Zhuji.stmt2.executeUpdate(sql);
-						  Zhuji.d.commit();
+					      Service.stmt2.executeUpdate(sql);
+						  Service.d.commit();
 			    	  }
 			      }
 			      rs.close();

@@ -1,11 +1,7 @@
-//===============================================================
-//Zhuji类
+
 //服务器端的运行类，服务器的核心
-//===============================================================
 
 package main;
-
-//作者：张海涛
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -20,19 +16,16 @@ import connect.AConnectionManager;
 import message.Db;
 import server.AddfriendListener;
 import server.AddgroupListener;
-import server.AddplanListener;
 import server.ChatP2PListener;
 import server.ChatRoomListener;
 import server.LogOutListener;
 import server.LoginMsgListener;
 import server.NewGroupListener;
-import server.NewPlanListener;
 import server.OnLineListener;
-import server.PlanListener;
 import server.SignListener;
 import server.ZhuceListener;
 
-public class Zhuji {
+public class Service {
 
 	public static Connection c = null;
 	public static Statement stmt = null;
@@ -44,7 +37,7 @@ public class Zhuji {
 	public static void main(String[] args) {
 		try {
 			//创建一个线程 等其他客户端的连接
-			final ServerSocket server = new ServerSocket(8080);
+			final ServerSocket server = new ServerSocket(8088);
 			System.out.println("---服务器启动---" + new Date().toString());
 
 			//初始化数据库
@@ -82,10 +75,7 @@ public class Zhuji {
 							conn.addOnRecevieMsgListener(new LogOutListener());
 							conn.addOnRecevieMsgListener(new AddfriendListener());
 							conn.addOnRecevieMsgListener(new AddgroupListener());
-							conn.addOnRecevieMsgListener(new AddplanListener());
-							conn.addOnRecevieMsgListener(new PlanListener());
 							conn.addOnRecevieMsgListener(new NewGroupListener());
-							conn.addOnRecevieMsgListener(new NewPlanListener());
 							conn.addOnRecevieMsgListener(new ZhuceListener(conn));
 							conn.addOnRecevieMsgListener(new OnLineListener(conn));
 							//该线程内等待用户数据

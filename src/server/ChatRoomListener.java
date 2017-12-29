@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 import connect.AConnectionManager;
 import connect.AConnection.OnRecevieMsgListener;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageType;
 
@@ -20,7 +20,7 @@ public class ChatRoomListener extends MessageSender implements OnRecevieMsgListe
 			try {
 				AConnectionManager.addMessage(fromOneClient);
 				//根据群组号码查询群组成员信息
-			    ResultSet r = Zhuji.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
+			    ResultSet r = Service.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
 				long group=fromOneClient.to;
 				String member="";
 				
@@ -44,5 +44,4 @@ public class ChatRoomListener extends MessageSender implements OnRecevieMsgListe
 			}
 		}
 	}
-
 }

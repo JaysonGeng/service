@@ -11,7 +11,6 @@ import connect.AConnectionManager;
 import message.AMessage;
 import message.AMessageList;
 import message.AMessageType;
-import message.APlanList;
 import message.BuddyList;
 import message.Db;
 import message.Group;
@@ -74,8 +73,7 @@ public class LoginMsgListener extends MessageSender implements OnRecevieMsgListe
 							
 							// 返回活动名单
 							AMessage toClient3 = new AMessage();
-							APlanList planlist=AConnectionManager.planlist;
-							toClient3.content = planlist.toJson();
+
 							toClient3.type = AMessageType.MSG_TYPE_PLANLIST;
 							toClient3.fromName=user.name;
 							toClient(toClient3,conn);

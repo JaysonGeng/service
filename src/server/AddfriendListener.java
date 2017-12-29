@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import connect.AConnection;
 import connect.AConnection.OnRecevieMsgListener;
 import connect.AConnectionManager;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageList;
 import message.AMessageType;
@@ -64,29 +64,29 @@ public class AddfriendListener extends MessageSender implements OnRecevieMsgList
 				long c1=Long.parseLong(b1[0]),c2=Long.parseLong(b2[0]);
 				
 				//修改两人在数据库里好友的数据
-			    ResultSet rs = Zhuji.stmt.executeQuery( "SELECT * FROM COMPANY;" );
+			    ResultSet rs = Service.stmt.executeQuery( "SELECT * FROM COMPANY;" );
 			      while ( rs.next() ) 
 			      {
 			    	  long d=rs.getInt("number");
 			    	  if(d==c1)
 			    	  {
 					      String sql = "UPDATE COMPANY set FRIEND = '"+rs.getString("friend")+"#"+c2+"/我的好友"+"' where NUMBER = "+c1+";";
-					      Zhuji.stmt.executeUpdate(sql);
-						  Zhuji.c.commit();
+					      Service.stmt.executeUpdate(sql);
+						  Service.c.commit();
 						Db.getBuddyByAccount(c1).groupInfo+="#"+c2+"/"+b2[1];
 						break;
 			    	  }
 			      }
 			      rs.close();
-				    ResultSet re = Zhuji.stmt.executeQuery( "SELECT * FROM COMPANY;" );
+				    ResultSet re = Service.stmt.executeQuery( "SELECT * FROM COMPANY;" );
 			      while ( re.next() ) 
 			      {
 			    	  long d=re.getInt("number");
 			    	  if(d==c2)
 			    	  {
 					      String sql = "UPDATE COMPANY set FRIEND = '"+re.getString("friend")+"#"+c1+"/我的好友"+"' where NUMBER = "+c2+";";
-					      Zhuji.stmt.executeUpdate(sql);
-						  Zhuji.c.commit();
+					      Service.stmt.executeUpdate(sql);
+						  Service.c.commit();
 							Db.getBuddyByAccount(c2).groupInfo+="#"+c1+"/"+b1[1];
 							break;
 			    	  }

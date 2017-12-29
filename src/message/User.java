@@ -11,6 +11,6 @@ public class User extends ProtocalObj {
 	public String name = "";	// 昵称
 	public String sign;			//个性签名
 	public String groupInfo;	//群组信息
-	public int avatar;			// 头像(未用)
+	public int avatar;			// 头像
 
 }

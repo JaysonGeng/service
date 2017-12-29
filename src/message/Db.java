@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import main.Zhuji;
+import main.Service;
 
 public class Db 
 {
@@ -17,7 +17,7 @@ public class Db
 	public static BuddyList dblist = new BuddyList();
 	static {	
 		try {
-			ResultSet rs = Zhuji.stmt.executeQuery( "SELECT * FROM COMPANY;" );
+			ResultSet rs = Service.stmt.executeQuery( "SELECT * FROM COMPANY;" );
 			while (rs.next()) 
 			{	    	
 				//向服务器管理用户列表添加

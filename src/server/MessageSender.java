@@ -7,13 +7,11 @@ package server;
 
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.util.Map;
 import java.util.Set;
 
 import connect.AConnection;
 import connect.AConnectionManager;
-import main.Zhuji;
 import message.AMessage;
 
 public class MessageSender {

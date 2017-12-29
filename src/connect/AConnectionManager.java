@@ -11,7 +11,6 @@ import java.util.List;
 import message.AMessage;
 import message.AMessageList;
 import message.AMessageType;
-import message.APlanList;
 import message.Db;
 import message.GroupList;
 
@@ -19,12 +18,12 @@ import message.GroupList;
 public class AConnectionManager {
 	public static HashMap<Long, AConnection> conns ;
 	public static GroupList grouplist ;
-	public static APlanList planlist ;
+
 	public static List<AMessageList> list ;
 	
 	public AConnectionManager(){
 		grouplist = new GroupList();
-		planlist = new APlanList();
+
 		conns = new HashMap<Long, AConnection>();
 		list = new ArrayList<AMessageList>();
 	}

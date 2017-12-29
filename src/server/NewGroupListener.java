@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 
 import connect.AConnection.OnRecevieMsgListener;
 import connect.AConnectionManager;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageType;
 import message.GroupList;
@@ -24,15 +24,15 @@ public class NewGroupListener extends MessageSender implements OnRecevieMsgListe
 					String describe = params[1];					
 					
 					int num=0;
-				    ResultSet r = Zhuji.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
+				    ResultSet r = Service.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
 				    while ( r.next())
 				    	  num++;
 				    r.close();
 				    num++;
 					String sql = "INSERT INTO COMPANY (ID,NUMBER,NAME,DESCRIBE,MEMBER) " +
 						"VALUES ( "+num+", "+(num+100000)+", '"+name+"', '"+describe+"', '"+fromCient.from+"' );"; 
-					Zhuji.stmt2.executeUpdate(sql);
-				    Zhuji.d.commit();
+					Service.stmt2.executeUpdate(sql);
+				    Service.d.commit();
 
 				    //将新的群组列表发给所有客户端
 				      AConnectionManager.grouplist=new GroupList();

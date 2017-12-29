@@ -7,7 +7,7 @@ package server;
 
 
 import connect.AConnection.OnRecevieMsgListener;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageType;
 import message.BuddyList;
@@ -20,8 +20,8 @@ public class SignListener extends MessageSender implements OnRecevieMsgListener 
 		if (AMessageType.MSG_TYPE_USERSIGN.equals(msg.type)) {
 			try {
 			      String sql = "UPDATE COMPANY set SIGN = '"+msg.content+"' where NUMBER = "+msg.from+";";
-			      Zhuji.stmt.executeUpdate(sql);
-			      Zhuji.c.commit();
+			      Service.stmt.executeUpdate(sql);
+			      Service.c.commit();
 			      Db.getBuddyByAccount(msg.from).sign=msg.content;
 			      Db.getUserByAccount(msg.from).sign=msg.content;
 			      

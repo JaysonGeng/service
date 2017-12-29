@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.Zhuji;
+import main.Service;
 
 public class GroupList extends ProtocalObj {
 	public List<Group> groupList = new ArrayList<Group>();
@@ -19,7 +19,7 @@ public class GroupList extends ProtocalObj {
 	public GroupList()
 	{
 		try {
-		     ResultSet rs = Zhuji.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
+		     ResultSet rs = Service.stmt2.executeQuery( "SELECT * FROM COMPANY;" );
 	      while ( rs.next() ) {
 	    	  Group a=new Group();
 	    	  a.number=rs.getInt("number");

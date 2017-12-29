@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 import connect.AConnection;
 import connect.AConnection.OnRecevieMsgListener;
-import main.Zhuji;
+import main.Service;
 import message.AMessage;
 import message.AMessageType;
 import message.Buddy;
@@ -36,14 +36,14 @@ public class ZhuceListener extends MessageSender implements OnRecevieMsgListener
 					String pwd = params[1];					
 					
 					int num=0;
-				    ResultSet r = Zhuji.stmt.executeQuery( "SELECT * FROM COMPANY;" );
+				    ResultSet r = Service.stmt.executeQuery( "SELECT * FROM COMPANY;" );
 				    while ( r.next())
 				    	  num++;
 				    num++;
 					String sql = "INSERT INTO COMPANY (ID,NUMBER,NAME,PASSWORD,SIGN,FRIEND) " +
-						"VALUES ( "+num+", "+(num+10000)+", '"+name+"', '"+pwd+"', '', '"+(num+10000)+"/自己' );"; 
-					Zhuji.stmt.executeUpdate(sql);
-				    Zhuji.c.commit();
+						"VALUES ( "+num+", "+(num+10000)+", '"+name+"', '"+pwd+"', '', '"+(num+10000)+"/自己' );";
+					Service.stmt.executeUpdate(sql);
+				    Service.c.commit();
 				    r.close();
 				    			    
 				    //返回成功信息
